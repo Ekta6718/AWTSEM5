@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <title></title>
+    <style>
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+
+        table th,
+        table td {
+            padding: 5px;
+            border-color: #ccc;
+        }
+
+        input[type="button"] {
+            background-color: #08F;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            //Build an array containing Customer records.
+            var Students = new Array();
+            //Students.push(["1", "Vatsal","CE","v@gmail.com"]);  //adds a new element to an array (at the end):
+            console.log(Students);
+
+            //Add the data rows.
+            for (var i = 0; i < Students.length; i++) {
+                AddRow(Students[i][0], Students[i][1], Students[i][2], Students[i][3]);//AddRow("Mrugendra", "India")
+            }
+
+        };
+
+        function Add() {
+            var txtID = document.getElementById("roll")
+            var txtName = document.getElementById("name");
+            var txtDepartment = document.getElementById("department");
+            var txtEmail = document.getElementById("email");
+
+            console.log(txtID);
+            console.log(txtName);
+            console.log(txtDepartment);
+            console.log(txtEmail);
+
+            AddRow(txtID.value, txtName.value, txtDepartment.value, txtEmail.value);
+            txtID.value = "";
+            txtName.value = "";
+            txtDepartment.value = "";
+            txtEmail.value = "";
+        };
+
+        function Remove(button) {
+            //Determine the reference of the Row using the Button.
+            var row = button.parentNode.parentNode;
+            var name = row.getElementsByTagName("TD")[0].innerHTML;
+            console.log(name);
+            if (confirm("Do you want to delete: " + name)) {
+
+                //Get the reference of the Table.
+                var table = document.getElementById("tblStudents");
+
+                //Delete the Table row using it's Index.
+                table.deleteRow(row.rowIndex);
+            }
+        };
+
+//        This is the edit button
+
+        /*function Edit(button) {
+            var row = button.parentNode.parentNode;
+
+            let editWhat = prompt("What do you want to Edit ? : ")
+            if (editWhat === "both") {
+                var name = prompt("Enter name : ")
+                var country = prompt("Enter Country : ")
+                row.getElementsByTagName("TD")[0].innerHTML = name;
+                row.getElementsByTagName("TD")[1].innerHTML = country;
+            }
+            else if (editWhat === "name") {
+                var name = prompt("Enter name : ")
+                row.getElementsByTagName("TD")[0].innerHTML = name;
+            }
+            else if (editWhat === "country") {
+                var country = prompt("Enter Country : ")
+                row.getElementsByTagName("TD")[1].innerHTML = country;
+            }
+        }*/
+
+        function AddRow(rollId, name, department, email) {
+            //Get the reference of the Table's TBODY element.
+            var tBody = document.getElementById("tblStudents").getElementsByTagName("TBODY")[0];
+
+            //Add Row.
+            row = tBody.insertRow(-1);
+
+            console.log(row);
+
+            //Add ID cell
+            var cell = row.insertCell(-1)
+            cell.innerHTML = rollId
+
+            //Add Name cell.
+            var cell = row.insertCell(-1);
+            cell.innerHTML = name;
+
+            console.log(cell);
+
+            //Add Department cell.
+            cell = row.insertCell(-1);
+            cell.innerHTML = department;
+
+            //Add email cell
+            cell = row.insertCell(-1);
+            cell.innerHTML = email;
+
+            //Add Button cell.
+            cell = row.insertCell(-1);
+            var btnRemove = document.createElement("INPUT");
+            btnRemove.type = "button";
+            btnRemove.value = "Remove";
+            btnRemove.setAttribute("onclick", "Remove(this);");
+            cell.appendChild(btnRemove);
+
+            // Creating the Edit button
+
+            /*cell = row.insertCell(-1);
+            var editButton = document.createElement("INPUT");
+            editButton.type = "button";
+            editButton.value = "Edit";
+            editButton.setAttribute("onclick", "Edit(this);");
+            cell.appendChild(editButton);*/
+        }
+    </script>
+
+
+
+    <form action="#">
+        <label for="name">Name</label> <input id="name" type="text" placeholder="enter the Name">
+        <br> <br>
+        <label for="roll">ID</label> <input id="roll" type="text" placeholder="enter the ID">
+        <br> <br>
+        <label for="department">Department</label> <input id="department" type="text" placeholder="enter the Department">
+        <br> <br>
+        <label for="email">Email</label> <input id="email" type="text" placeholder="enter the Email">
+        <br> <br>
+        <Button onclick="Add()"> Submit </Button>
+    </form>
+
+    <table id="tblStudents" cellpadding="0" cellspacing="0" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</body>
+
+</html>
