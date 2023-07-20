@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: lightslategrey;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: ivory;
+    padding: 15px;
+    display: flex;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    width:fit-content;
+    border: transparent;
+    box-shadow: 10px 5px 10px 5px rgb(0,0,0,0.6);
+    border-radius: 5px;
+}
+
+.btn-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: auto;
+    border-radius: 5px;
+    border: transparent;
+    background-color: lightslategray;
+    color: white;
+    box-shadow: 5px 3px 5px 1px rgb(0,0,0,0.6);
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.2);
+        transition: ease 0.3s;
+    }
+}
