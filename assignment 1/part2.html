@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignmet 1 - part 2</title>
+    <style>
+        button{
+            margin-right: 10px;
+            align-items: center;
+            padding: 5px 5px 5px 5px;
+            transition: transform ease 0.2s;
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+        }
+    </style>
+
+    <script src="./Part 2.js"></script>
+</head>
+<body>
+    <h1>Click outside after entering</h1>
+    <label for="num1">Number 1 : </label><input type="text" id="num1" onblur="awake()" onchange="result()"/> <span id="notNum1"></span>
+    <br>
+    <br>
+    <label for="num2">Number 2 : </label><input type="text" id="num2" onblur="awake()" onchange="result()"/> <span id="notNum2"></span>
+    <br>
+    <br>
+    <div><span>Result </span>
+        <hr>
+        <br><span>Addition is : </span><b><span id="ADDITION"></span></b>
+        <br><span>Subtraction is : </span><b><span id="SUBTRACTION"></span></b>
+        <br><span>Multiplication is : </span><b><span id="MULTIPLICATION"></span></b>
+        <br><span>Division is : </span><b><span id="DIVISION"></span></b>
+        <br><span>Modulus is : </span><b><span id="MODULUS"></span></b>
+    </div>
+
+</body>
+</html>
